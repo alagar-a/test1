@@ -13,4 +13,5 @@ yaml_conf = yaml.load(open(args.conf))
 while(1):
 	task_gen = TaskGenerator(yaml_conf)
 	task_gen.generate_tasks();
+	task_gen.distribute_tasks();
 	time.sleep(30)
