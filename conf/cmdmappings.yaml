@@ -1,0 +1,15 @@
+http: /usr/bin/curl -v {0}
+https: /usr/bin/curl -v -k {0}
+http6: /usr/bin/curl -v -6 {0}
+https6: /usr/bin/curl -v -k -6 {0}
+http4: /usr/bin/curl -v -4 {0}
+https4: /usr/bin/curl -v -k -4 {0}
+ping: /bin/ping -c 10 -s 1452 {0}
+ping4: /bin/ping -c 10 -s 1452 {0}
+ping6: /bin/ping6 -c 10 -s 1452 {0}
+porttcp: /bin/nc -vz {0} {1}
+porttcp4: /bin/nc -4 -vz {0} {1}
+porttcp6: /bin/nc -6 -vz {0} {1}
+portudp: /bin/nc -uvz {0} {1}
+portudp4: /bin/nc -4 -uvz {0} {1}
+portudp6: /bin/nc -6 -uvz {0} {1}
