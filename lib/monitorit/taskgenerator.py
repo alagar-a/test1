@@ -1,6 +1,7 @@
 import monitorit.db as monitordb
 import yaml
 import os
+import subprocess
 
 class TaskGenerator:
 	def __init__(self,conf):
@@ -41,6 +42,7 @@ class TaskGenerator:
 			else:
 				task_obj['command'] = cmd.format(obj['addr'].format('addr'))
 			self.tasks.append(task_obj)
+		print "task generation done"
 ##		print self.tasks
 				
 	def distribute_tasks(self):
@@ -60,9 +62,14 @@ class TaskGenerator:
 			filename = dirname + "/tasks.yaml"
 			with open(filename,'w') as yaml_file:
 				yaml.dump(split_tasks[i], yaml_file, default_flow_style=False)
-			print filename
 			
 			self.hosttotaskfile[pollers[i]] = filename
 		
-		
-		
+		for k in self.hosttotaskfile.keys():
+			rsync_cmd = "/usr/bin/rsync -vrz --timeout=10 --password-file=/etc/rsync.password "+self.hosttotaskfile[k]+" monitit@"+k+"::share"
+			try: 
+				output = subprocess.check_output(rsync_cmd, shell=True)
+			except Exception as e:
+				print str(e)
+
+		print "task distribution done"
