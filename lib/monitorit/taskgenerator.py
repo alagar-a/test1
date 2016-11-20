@@ -28,6 +28,8 @@ class TaskGenerator:
 		for obj in monitor_objs:
 			task_obj = dict()
 			task_obj['frequency'] = obj['polling_frequency']
+			task_obj['task_id'] = obj['id']
+			task_obj['addr'] = obj['addr']
 
 			task_obj['monitor_type'] = obj['monitor_type']
 			if (obj['addr_type'] == 'ipv4'):

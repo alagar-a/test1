@@ -1,2 +1,2 @@
-poller:
-  -alagar
+tasks_location: "/project/backend/var/generated_tasks/"
+poller: ["alagar"]

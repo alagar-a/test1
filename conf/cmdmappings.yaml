@@ -1,9 +1,9 @@
-http: /usr/bin/curl -v {0}
-https: /usr/bin/curl -v -k {0}
-http6: /usr/bin/curl -v -6 {0}
-https6: /usr/bin/curl -v -k -6 {0}
-http4: /usr/bin/curl -v -4 {0}
-https4: /usr/bin/curl -v -k -4 {0}
+http: /usr/bin/curl -s -IL -o /dev/null -w %{{http_code}} {0}
+https: /usr/bin/curl -k -s -IL -o /dev/null -w %{{http_code}} {0}
+http6: /usr/bin/curl -6 -s -IL -o /dev/null -w %{{http_code}} {0}
+https6: /usr/bin/curl -6 -k -s -IL -o /dev/null -w %{{http_code}} {0}
+http4: /usr/bin/curl -4 -s -IL -o /dev/null -w %{{http_code}} {0}
+https4: /usr/bin/curl -4 -s -k -IL -o /dev/null -w %{{http_code}} {0}
 ping: /bin/ping -c 10 -s 1452 {0}
 ping4: /bin/ping -c 10 -s 1452 {0}
 ping6: /bin/ping6 -c 10 -s 1452 {0}
